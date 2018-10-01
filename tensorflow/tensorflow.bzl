@@ -216,8 +216,6 @@ def tf_copts(android_optimization_level_override="-O2", is_external=False):
       + if_mkl(["-DINTEL_MKL=1", "-DEIGEN_USE_VML"])
       + if_mkl_lnx_x64(["-fopenmp"])
       + if_android_arm(["-mfpu=neon"])
-      + if_linux_x86_64(["-msse3"])
-      + if_ios_x86_64(["-msse4.1"])
       + select({
             clean_dep("//tensorflow:framework_shared_object"): [],
             "//conditions:default": ["-DTENSORFLOW_MONOLITHIC_BUILD"],
